@@ -1,6 +1,6 @@
 {
   "name": "compute-isinf",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Computes for each array element whether an element is infinite.",
   "author": {
     "name": "Athan Reines",
