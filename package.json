@@ -25,7 +25,17 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "array",
+    "utilities",
+    "utils",
+    "isinf",
+    "infinite",
+    "logical",
+    "mathematics",
+    "math",
+    "statistics",
+    "stats"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/isinf/issues"

@@ -19,18 +19,47 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 To use the module,
 
 ``` javascript
-var foo = require( 'compute-isinf' );
+var isinf = require( 'compute-isinf' );
 ```
 
-#### foo( arr )
+#### isinf( arr )
 
-What does this function do?
+Computes for each `array` element whether an element is infinite. The function returns an `array` with length equal to that of the input `array`. Each output `array` element is either `0` or `1`. A value of `1` means that an element is infinite and `0` means that an element is __not__ infinite.
+
+``` javascript
+var out = isinf( [ 5, 1/0, 3, 9, -1/0 ] );
+// returns [ 0, 1, 0, 0, 1 ]
+```
 
 
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-isinf' );
+var isinf = require( 'compute-isinf' );
+
+// Simulate some data...
+var data = new Array( 100 ),
+	len = data.length,
+	rand;
+
+// Division by 0 returns infinity...
+for ( var i = 0; i < len; i++ ) {
+	rand = Math.random()*10 - 5;
+	if ( rand < -4.5 ) {
+		rand = 0;
+	}
+	data[ i ] = 100 / rand;
+}
+
+var out = isinf( data );
+
+// Count the number of infinite values detected...
+var sum = 0;
+for ( var i = 0; i < len; i++ ) {
+	sum += out[ i ];
+}
+
+console.log( 'Count: %d', sum );
 ```
 
 To run the example code from the top-level application directory,
