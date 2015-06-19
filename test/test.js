@@ -182,7 +182,6 @@ describe( 'compute-isinf', function tests() {
 		mat = matrix( d1, [10,10], 'float64' );
 		out = isinf( mat );
 
-		console.log( out.data )
 		// assert.deepEqual( out.data, d2 );
 
 		// Mutate...
