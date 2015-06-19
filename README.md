@@ -68,7 +68,7 @@ out = isinf( mat );
 
 When provided an input `array`, the function accepts two `options`:
 
-*  __copy__: `boolean` indicating whether to return a new `array` containing 0/1's indicating whether the corresponding element is an even number. Default: `true`.
+*  __copy__: `boolean` indicating whether to return a new `array` containing 0/1's indicating whether the corresponding element is infinite. Default: `true`.
 *  __accessor__: accessor `function` for accessing numeric values in object `arrays`.
 
 For `matrices`, only the `copy` option is applicable.
