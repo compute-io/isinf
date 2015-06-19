@@ -33,19 +33,19 @@ var matrix = require( 'dstructs-matrix' ),
     i;
 
 out = isinf( Infinity );
-// returns true
+// returns 1
 
 out = isinf( 293 );
-// returns false
+// returns 0
 
-data = [ 5, 1/0, 3, 9, -1/0 ]
+data = [ 5, 1/0, 3, 9, -1/0, NaN ]
 out = isinf( data );
-// returns [ 0, 1, 0, 0, 1 ]
+// returns [ 0, 1, 0, 0, 1, 0 ]
 
 
 data = new Float64Array( data );
 out = isinf( data );
-// returns Uint8Array( [0, 1, 0, 0, 1] )
+// returns Uint8Array( [0, 1, 0, 0, 1, 0] )
 
 data = new Float64Array( 9 );
 for ( i = 1; i < 10; i++ ) {
