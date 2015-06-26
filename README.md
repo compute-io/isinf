@@ -18,10 +18,10 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 
 ``` javascript
-var isInf = require( 'compute-isinf' );
+var isinf = require( 'compute-isinf' );
 ```
 
-#### isInf( x[, options] )
+#### isinf( x[, options] )
 
 Checks element-wise whether numbers in `x` are infinite. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix). Correspondingly, the function returns either a single number, an `array` with length equal to that of the input `array` or a `matrix` with equal dimensions as input `x`. Each output element is either `0` or `1`. A value of `1` means that an element is infinite  and `0` means that an element is __not__ infinite.
 
@@ -32,20 +32,20 @@ var matrix = require( 'dstructs-matrix' ),
     out,
     i;
 
-out = isInf( Infinity );
-// returns true
+out = isinf( Infinity );
+// returns 1
 
-out = isInf( 293 );
-// returns false
+out = isinf( 293 );
+// returns 0
 
-data = [ 5, 1/0, 3, 9, -1/0 ]
-out = isInf( data );
-// returns [ 0, 1, 0, 0, 1 ]
+data = [ 5, 1/0, 3, 9, -1/0, NaN ]
+out = isinf( data );
+// returns [ 0, 1, 0, 0, 1, 0 ]
 
 
 data = new Float64Array( data );
-out = isInf( data );
-// returns Uint8Array( [0, 1, 0, 0, 1] )
+out = isinf( data );
+// returns Uint8Array( [0, 1, 0, 0, 1, 0] )
 
 data = new Float64Array( 9 );
 for ( i = 1; i < 10; i++ ) {
@@ -58,7 +58,7 @@ mat = matrix( data, [3,3], 'float64' );
 	  7 8 Infinity ]
 */
 
-out = isInf( mat );
+out = isinf( mat );
 /*
 	[ 0 0 1
 	  0 0 1
@@ -68,7 +68,7 @@ out = isInf( mat );
 
 When provided an input `array`, the function accepts two `options`:
 
-*  __copy__: `boolean` indicating whether to return a new `array` containing 0/1's indicating whether the corresponding element is an even number. Default: `true`.
+*  __copy__: `boolean` indicating whether to return a new `array` containing 0/1's indicating whether the corresponding element is infinite. Default: `true`.
 *  __accessor__: accessor `function` for accessing numeric values in object `arrays`.
 
 For `matrices`, only the `copy` option is applicable.
@@ -83,7 +83,7 @@ var data,
 
 data = [ 1, 2/0, 3 ];
 
-out = isInf( arr, {
+out = isinf( arr, {
 	'copy': false
 });
 // returns [ 0, 1, 0 ]
@@ -102,7 +102,7 @@ mat = matrix( data, [3,3], 'float64' );
 	  7 8 Infinity ]
 */
 
-out = isInf( mat, {
+out = isinf( mat, {
 	'copy': false
 });
 /*
@@ -130,7 +130,7 @@ function getValue( d, i ) {
 	return d[ 1 ];
 }
 
-var out = isInf( data, {
+var out = isinf( data, {
 	'accessor': getValue
 });
 // returns [ 0, 0, 0, 1, 1 ]

@@ -182,8 +182,7 @@ describe( 'compute-isinf', function tests() {
 		mat = matrix( d1, [10,10], 'float64' );
 		out = isinf( mat );
 
-		console.log( out.data )
-		// assert.deepEqual( out.data, d2 );
+		assert.deepEqual( out.data, d2 );
 
 		// Mutate...
 		out = isinf( mat, {
@@ -191,8 +190,7 @@ describe( 'compute-isinf', function tests() {
 		});
 		assert.strictEqual( mat, out );
 
-		console.log( cast( d2, 'float64' ) );
-		// assert.deepEqual( mat.data, cast( d2, 'float64' ) );
+		assert.deepEqual( mat.data, cast( d2, 'float64' ) );
 	});
 
 	it( 'should return `null` if provided an empty data structure', function test() {
